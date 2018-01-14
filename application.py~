@@ -9,10 +9,7 @@ header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
     <p>Hi guys! -parth</p>\n
-    <p> Hello - augustus </p>
-    <p> What's up - Niral </p>
-'''
-
+    <p> Hello - augustus </p>'''
 home_link = '<p><a href="/">Back</a></p>\n'
 footer_text = '</body>\n</html>'
 
