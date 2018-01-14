@@ -1,6 +1,6 @@
 venv/
 *.pyc
-
+*~
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
