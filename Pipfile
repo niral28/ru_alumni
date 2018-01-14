@@ -7,8 +7,13 @@ name = "pypi"
 
 [packages]
 
-flask = "*"
+Flask = "==0.12.2"
 awsebcli = "*"
+click = "==6.7"
+itsdangerous = "==0.24"
+"Jinja2" = "==2.10"
+MarkupSafe = "==1.0"
+Werkzeug = "==0.14.1"
 
 
 [dev-packages]

@@ -8,7 +8,8 @@ def say_hello(username = "World"):
 header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
-    <p>Hi guys! -parth</p>\n'''
+    <p>Hi guys! -parth</p>\n
+    <p> Hello - augustus </p>'''
 home_link = '<p><a href="/">Back</a></p>\n'
 footer_text = '</body>\n</html>'
 
