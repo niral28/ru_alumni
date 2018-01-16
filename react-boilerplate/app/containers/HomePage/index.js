@@ -9,22 +9,22 @@
  * the linting exception.
  */
 
-import { Button } from 'antd';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-// import './HomePage.css';
-// import LoginForm from '../../components/LoginForm';
+import LoginForm from '../../components/LoginForm';
 
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-        <Button type="dashed"> Hello, World </Button>
-        <h1>
+      <div style={{ display: 'flex', 'justify-content': 'center', 'align-items': 'center' }}>
+        <div>
+          <LoginForm />
+        </div>
+        {/* <h1>
           <FormattedMessage {...messages.header} />
-        </h1>
+        </h1> */}
       </div>
     );
   }
