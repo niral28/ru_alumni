@@ -11,6 +11,7 @@ const webpack = require('webpack');
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
 
+
 module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign({ // Compile into js/build.js
@@ -24,7 +25,11 @@ module.exports = (options) => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: options.babelQuery,
+          options: {
+            plugins: [ // or options.babelQuery in the future
+              ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }],
+            ],
+          },
         },
       },
       {

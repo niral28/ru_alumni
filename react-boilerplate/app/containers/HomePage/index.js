@@ -9,11 +9,11 @@
  * the linting exception.
  */
 
-import Button from 'antd/lib/button';
+import { Button } from 'antd';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import './HomePage.css';
+// import './HomePage.css';
 // import LoginForm from '../../components/LoginForm';
 
 
@@ -21,7 +21,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   render() {
     return (
       <div>
-        <Button type="primary"> Hello, World </Button>
+        <Button type="dashed"> Hello, World </Button>
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
