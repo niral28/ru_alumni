@@ -11,29 +11,47 @@
 
 import React from 'react';
 // import { FormattedMessage } from 'react-intl';
-import { Divider, Icon } from 'antd';
+import { Button } from 'antd';
 // import messages from './messages';
+import LoginModal from '../../components/Login/LoginModal';
 
-import LoginForm from '../../components/LoginForm';
-
+const ButtonGroup = Button.Group;
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  state = { loginVisible: false, signUpVisible: false }
+
+  showModal = (type) => {
+    if (type === 'login') {
+      this.setState({ loginVisible: true, signUpVisible: false });
+    } else {
+      this.setState({ loginVisible: false, signUpVisible: true });
+    }
+  }
+
+  closeModal = (type) => {
+    if (type === 'login') {
+      this.setState({ loginVisible: false });
+    } else {
+      this.setState({ signUpVisible: false });
+    }
+  }
+
   render() {
     return (
       <div style={{ flexDirection: 'column', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {/* <h1>
-          <FormattedMessage {...messages.header} />
-        </h1> */}
-        <div>
-          <Icon type="linkedin" style={{ fontSize: 100, color: '#08c' }} />
-        </div>
-        <div>
-          <Divider> OR </Divider>
-        </div>
-        <div>
-          <LoginForm />
-        </div>
 
+        <h1 style={{ fontSize: 60, color: '#cf1322' }}> RUAlumni </h1>
+
+        <ButtonGroup>
+          <Button onClick={() => this.showModal('login')}> Log In </Button>
+          <Button onClick={() => this.showModal('signup')}> Sign Up </Button>
+        </ButtonGroup>
+
+        <LoginModal
+          visible={this.state.loginVisible}
+          closeModal={this.closeModal}
+          showModal={this.showModal}
+        />
 
       </div>
     );
