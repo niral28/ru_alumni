@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "476ec205398ec46fa3554663826e4641838cddd1d2a56bd359c7b0037f21b79a"
+            "sha256": "62b441fbdaa40f3cf2520aa258b34151f18ec56419520bc945bdc2d23db37ed9"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -9,12 +9,12 @@
             "os_name": "posix",
             "platform_machine": "x86_64",
             "platform_python_implementation": "CPython",
-            "platform_release": "15.0.0",
-            "platform_system": "Darwin",
-            "platform_version": "Darwin Kernel Version 15.0.0: Sat Sep 19 15:53:46 PDT 2015; root:xnu-3247.10.11~1/RELEASE_X86_64",
+            "platform_release": "4.13.0-31-generic",
+            "platform_system": "Linux",
+            "platform_version": "#34-Ubuntu SMP Fri Jan 19 16:34:46 UTC 2018",
             "python_full_version": "3.6.3",
             "python_version": "3.6",
-            "sys_platform": "darwin"
+            "sys_platform": "linux"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -44,10 +44,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:adf58e6824c433b9a46aad9409f22a18a19c74f7f10ccdfff104bc201359e638",
-                "sha256:02d360797944f091fb5341a2a51810aa6f44f8b40ac66951c876555e410e5f06"
+                "sha256:a91430f0bfbf7c13edc474c3f0d46449108aaebcd6d8e82a5bf9aebe17b42258",
+                "sha256:b2c9e0fd6d14910f759a33c19f8315dddedbb3c5569472b7be7ceed4f001a675"
             ],
-            "version": "==1.8.28"
+            "version": "==1.8.36"
         },
         "cement": {
             "hashes": [
@@ -216,5 +216,13 @@
             "version": "==0.14.1"
         }
     },
-    "develop": {}
+    "develop": {
+        "pycodestyle": {
+            "hashes": [
+                "sha256:6c4245ade1edfad79c3446fadfc96b0de2759662dc29d07d80a6f27ad1ca6ba9",
+                "sha256:682256a5b318149ca0d2a9185d365d8864a768a28db66a84a2ea946bcc426766"
+            ],
+            "version": "==2.3.1"
+        }
+    }
 }
