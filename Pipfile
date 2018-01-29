@@ -10,15 +10,17 @@ name = "pypi"
 flask = "==0.12.2"
 awsebcli = "*"
 click = "==6.7"
-itsdangerous = "==0.24"
+itsdangerous = "*"
 "jinja2" = "==2.10"
 markupsafe = "==1.0"
 werkzeug = "==0.14.1"
+"boto3" = "*"
 
 
 [dev-packages]
 
 pycodestyle = "*"
+pytest = "*"
 
 
 [requires]
