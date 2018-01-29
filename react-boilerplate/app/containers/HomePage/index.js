@@ -10,10 +10,9 @@
  */
 
 import React from 'react';
-// import { FormattedMessage } from 'react-intl';
 import { Button } from 'antd';
-// import messages from './messages';
 import LoginModal from '../../components/Login/LoginModal';
+import SignupModal from '../../components/Signup/SignupModal';
 
 const ButtonGroup = Button.Group;
 
@@ -48,6 +47,12 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </ButtonGroup>
 
         <LoginModal
+          visible={this.state.loginVisible}
+          closeModal={this.closeModal}
+          showModal={this.showModal}
+        />
+
+        <SignupModal
           visible={this.state.loginVisible}
           closeModal={this.closeModal}
           showModal={this.showModal}
