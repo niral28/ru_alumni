@@ -1,0 +1,8 @@
+.send-email {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  height: 95%;
+  padding: 16px;
+}

@@ -53,7 +53,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         />
 
         <SignupModal
-          visible={this.state.loginVisible}
+          visible={this.state.signUpVisible}
           closeModal={this.closeModal}
           showModal={this.showModal}
         />
