@@ -5,6 +5,8 @@ import unittest.mock as mock
 from ru_alumni import application
 
 
+application.config.from_object('ru_alumni.config.TestingConfig')
+
 TEST_TABLE_NAME = 'TestUsers'
 TEST_TABLE_ATTRIBUTE_ARGS = {
     'TableName': TEST_TABLE_NAME,
@@ -82,7 +84,6 @@ def dynamodb():
     print('\nteardown [ ]')
     delete_test_table(ddb)
     print('teardown [x]')
-
 
 
 class TestDynamo():
