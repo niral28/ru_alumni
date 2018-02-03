@@ -1,7 +1,48 @@
 import boto3
 import pytest
 import unittest.mock as mock
+
 from ru_alumni import application
+
+
+TEST_TABLE_NAME = 'TestUsers'
+TEST_TABLE_ATTRIBUTE_ARGS = {
+    'TableName': TEST_TABLE_NAME,
+    'KeySchema': [
+        {
+            'AttributeName': 'account_id',
+            'KeyType': 'HASH'
+        }
+    ],
+    'AttributeDefinitions': [
+        {
+            'AttributeName': 'account_id',
+            'AttributeType': 'N'
+        }
+    ],
+    'ProvisionedThroughput': {
+        'ReadCapacityUnits': 1,
+        'WriteCapacityUnits': 1
+    }
+}
+TEST_ITEM = {
+    'account_id': 720,
+    'email_address': 'parthr.parikh@rutgers.edu'
+}
+
+
+def create_test_table(ddb):
+    ddb.create_table(**TEST_TABLE_ATTRIBUTE_ARGS)
+
+
+def populate_test_table(ddb):
+    table = ddb.Table(TEST_TABLE_NAME)
+    table.put_item(Item=TEST_ITEM)
+
+
+def delete_test_table(ddb):
+    table = ddb.Table(TEST_TABLE_NAME)
+    table.delete()
 
 
 @pytest.fixture
@@ -25,21 +66,27 @@ def dynamodb():
         aws_secret_access_key = any_string
     """
     session = boto3.Session(profile_name='local_testing')
-    ddb = session.client(
+    ddb = session.resource(
         'dynamodb',
         endpoint_url='http://localhost:8000',
         region_name='local'
     )
-    print('\nsetup')
-    # return ddb
+
+    print('\nsetup [ ]')
+    create_test_table(ddb)
+    populate_test_table(ddb)
+    print('setup [x]')
+
     yield ddb
-    print('\nteardown')
+
+    print('\nteardown [ ]')
+    delete_test_table(ddb)
+    print('teardown [x]')
+
 
 
 class TestDynamo():
 
     def test_dynamo_connection(self, dynamodb):
-        response = dynamodb.list_tables()
-        assert 'ResponseMetadata' in response
-        assert 'HTTPStatusCode' in response['ResponseMetadata']
-        assert 200 == response['ResponseMetadata']['HTTPStatusCode']
+        table = dynamodb.Table(TEST_TABLE_NAME)
+        assert 0 < table.item_count
