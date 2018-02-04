@@ -25,6 +25,7 @@ class TestEmailUtil():
         email_utils.validate_email_address(TEST_EMAIL)
         assert True
 
-    def test_email_send(self):
-        with application.app_context():
-            email_utils.send_email(TEST_EMAIL, 'Hi!', 'aye')
+    # TODO: Move this; it is an integ test
+    # def test_email_send(self):
+    #     with application.app_context():
+    #         email_utils.send_email(TEST_EMAIL, 'Hi!', 'aye')

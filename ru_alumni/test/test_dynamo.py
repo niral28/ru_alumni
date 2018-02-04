@@ -8,6 +8,8 @@ from ru_alumni import application
 application.config.from_object('ru_alumni.config.TestingConfig')
 
 TEST_TABLE_NAME = 'TestUsers'
+TEST_ACCOUNT_ID = 101
+TEST_EMAIL_ADDRESS = 'alum@rutgers.edu'
 TEST_TABLE_ATTRIBUTE_ARGS = {
     'TableName': TEST_TABLE_NAME,
     'KeySchema': [
@@ -28,8 +30,8 @@ TEST_TABLE_ATTRIBUTE_ARGS = {
     }
 }
 TEST_ITEM = {
-    'account_id': 720,
-    'email_address': 'parthr.parikh@rutgers.edu'
+    'account_id': TEST_ACCOUNT_ID,
+    'email_address': TEST_EMAIL_ADDRESS,
 }
 
 
@@ -74,16 +76,10 @@ def dynamodb():
         region_name='local'
     )
 
-    print('\nsetup [ ]')
     create_test_table(ddb)
     populate_test_table(ddb)
-    print('setup [x]')
-
     yield ddb
-
-    print('\nteardown [ ]')
     delete_test_table(ddb)
-    print('teardown [x]')
 
 
 class TestDynamo():
