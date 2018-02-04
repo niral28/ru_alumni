@@ -32,6 +32,8 @@ TEST_TABLE_ATTRIBUTE_ARGS = {
 TEST_ITEM = {
     'account_id': TEST_ACCOUNT_ID,
     'email_address': TEST_EMAIL_ADDRESS,
+    'is_verified': False,
+    'is_active': True,
 }
 
 
@@ -87,3 +89,41 @@ class TestDynamo():
     def test_dynamo_connection(self, dynamodb):
         table = dynamodb.Table(TEST_TABLE_NAME)
         assert 0 < table.item_count
+
+    def test_email_confirmation(self, dynamodb):
+        from ru_alumni import token_utils, email_utils
+
+        # really, this is done before adding user to
+        email_utils.validate_email_address(TEST_EMAIL_ADDRESS)
+
+        # generate token
+        token = token_utils.generate_token(TEST_ITEM)
+
+        # send email...
+        # hit /confirmation endpoint...
+
+        # confirm token
+        result_obj = token_utils.confirm_token(token)
+        assert TEST_ITEM == result_obj
+
+        # confirm user exists in database
+        users_table = dynamodb.Table(TEST_TABLE_NAME)
+        item = users_table.get_item(
+            Key={
+                'account_id': result_obj['account_id']
+            }
+        )
+        assert TEST_EMAIL_ADDRESS == item['Item']['email_address']
+        assert item['Item']['is_verified'] is False
+
+        # flip is_verified flag to True
+        # item['is_verified'] = True
+        users_table.update_item(
+            Key={
+                'account_id': TEST_ACCOUNT_ID
+            },
+            UpdateExpression='SET is_verified = :val1',
+            ExpressionAttributeValues={
+                ':val1': True
+            }
+        )
