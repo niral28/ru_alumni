@@ -13,8 +13,8 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 application = Flask(__name__)
 application.secret_key = os.urandom(24)
 
-client_id = keys.LIN_CLIENT_KEY;
-client_secret = keys.LIN_SECRET_KEY;
+client_id = os.environ[LIN_CLIENT_KEY];
+client_secret = os.environ[LIN_SECRET_KEY];
 
  # OAuth endpoints given in the LinkedIn API documentation
 authorization_base_url = urls.OAUTH_BASE_URL
