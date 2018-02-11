@@ -7,17 +7,22 @@ name = "pypi"
 
 [packages]
 
-Flask = "==0.12.2"
+flask = "==0.12.2"
 awsebcli = "*"
 click = "==6.7"
-itsdangerous = "==0.24"
-"Jinja2" = "==2.10"
-MarkupSafe = "==1.0"
-Werkzeug = "==0.14.1"
+itsdangerous = "*"
+"jinja2" = "==2.10"
+markupsafe = "==1.0"
+werkzeug = "==0.14.1"
+"boto3" = "*"
+flask-mail = "*"
 
 
 [dev-packages]
 
+pycodestyle = "*"
+pytest = "*"
+pylint = "*"
 
 
 [requires]

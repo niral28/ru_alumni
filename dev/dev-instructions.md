@@ -9,17 +9,13 @@ Parth Parikh, Austus Chang, Niral Shah
 
 Clone remote GitHub repo:
 
-```
-git clone https://github.com/niral28/ru_alumni.git
-cd ru_alumni
-```
+    git clone https://github.com/niral28/ru_alumni.git
+    cd ru_alumni
 
 Set up your own remote development branch. For example:
 
-```
-git checkout -b dev-<your-name>
-git push --set-upstream origin dev-<your-name> 
-```
+    git checkout -b dev-<your-name>
+    git push --set-upstream origin dev-<your-name> 
 
 Some things to consider:
 * Work on feature branches, not master
@@ -31,19 +27,16 @@ Some things to consider:
 
 From within `ru_alumni/`
 
-```
-pip install pipenv
-pipenv install -r requirements.txt
-pipenv shell
-```
+    pip install pipenv
+    pipenv install -r requirements.txt
+    pipenv shell
 
 Make sure awsebcli was installed:
-```
-cat Pipfile | grep awsebcli
 
-# You should see:
-awsebcli = "*"
-```
+    cat Pipfile | grep awsebcli
+
+    # You should see:
+    awsebcli = "*"
 
 If not, run: `pip install awsebcli`
 
@@ -52,10 +45,7 @@ If not, run: `pip install awsebcli`
 
 One-time init wizard (make sure virtualenv is activated)
 
-
-```
-eb init 
-```
+    eb init 
 
 1. Select `us-east-2` for region.  
    * Session may prompt you for programmatic aws credentials. There are two ways to access AWS, through the web console and through API. 
@@ -77,3 +67,27 @@ eb init
 * Build/test your changes
 * Push to AWS EB: `eb deploy`
 * Don't forget to push your changes to GitHub as well
+
+
+## How to run tests using pytest
+
+From the project root directory, run:
+
+    pytest -vs
+
+The `-v` argument enables verbose logs and `-s` outputs enables standard out (stdout) prints in terminal. 
+
+Note: For tests in `test_dynamo.py` to run, you must have a local instance of DynamoDB running. To do this, be sure to start DynamoDB locally by running:
+
+    java -Djava.library.path=./DynamoDBLocal_lib \
+        -jar DynamoDBLocal.jar \
+        -sharedDb
+
+from the directory containing `DynamoDBLocal.jar` and `DynamoDBLocal_lib/`.
+
+It is also necessary to have a `local_testing` profile in your aws cli
+configuration. You can add this to `~/.aws/config` as:
+
+        [profile local_testing]
+        aws_access_key_id = any_string
+        aws_secret_access_key = any_string
