@@ -4,17 +4,19 @@ from flask import Flask, redirect, url_for, session, request, jsonify
 from requests_oauthlib import OAuth2Session
 from requests_oauthlib.compliance_fixes import linkedin_compliance_fix
 import os 
-import keys
-import urls
+from ru_alumni import urls
+
 #for SSL
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+#os.environ['LIN_CLIENT_KEY']= '78gbrnp4ovmhd3'
+#os.environ['LIN_SECRET_KEY']= 'F8yif7Bjr86xKdAf'
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
 application.secret_key = os.urandom(24)
 
-client_id = os.environ[LIN_CLIENT_KEY];
-client_secret = os.environ[LIN_SECRET_KEY];
+client_id = os.environ['LIN_CLIENT_KEY'];
+client_secret = os.environ['LIN_SECRET_KEY'];
 
  # OAuth endpoints given in the LinkedIn API documentation
 authorization_base_url = urls.OAUTH_BASE_URL

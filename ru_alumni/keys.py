@@ -1,0 +1,3 @@
+LIN_CLIENT_KEY = '78gbrnp4ovmhd3'
+LIN_SECRET_KEY = 'F8yif7Bjr86xKdAf'
+
