@@ -16,6 +16,11 @@ markupsafe = "==1.0"
 werkzeug = "==0.14.1"
 "boto3" = "*"
 flask-mail = "*"
+botocore = "*"
+"httplib2" = "*"
+flask-oauth = "*"
+flask-oauthlib = "*"
+"oauth2" = "*"
 
 
 [dev-packages]
