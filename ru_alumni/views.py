@@ -1,3 +1,5 @@
+from flask import render_template
+from ru_alumni import application
 from flask import Flask, redirect, url_for, session, request, jsonify
 from requests_oauthlib import OAuth2Session
 from requests_oauthlib.compliance_fixes import linkedin_compliance_fix
@@ -41,13 +43,8 @@ def profile():
     r = jsonify(linkedin.get(urls.USER_DATA).json())
     return r
 
-# run the app.
-if __name__ == "__main__":
-    # Setting debug to True enables debug output. This line should be
-    # removed before deploying a production app.
-#     application.debug = True
-#     os.environ['DEBUG'] = '1'
-    
-    application.debug = True
-    application.run()
+
+@application.route('/')
+def index():
+    return render_template('index.html')
 
